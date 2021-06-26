@@ -1,0 +1,39 @@
+<snippet>
+	<content><![CDATA[
+int fact[100005], invfact[100005];
+
+// use modpower snippet 
+
+int nCr(int n, int r)
+{
+	if (r > n || n<0 || r<0) return 0;
+
+	int ans = fact[n];
+	ans = (ans % MOD * invfact[r]) % MOD;
+	ans = (ans % MOD * invfact[n - r]) % MOD;
+	return ans;
+}
+
+// put inside main function 
+// check value of n 
+fact[0] = 1;
+
+	for (int i = 1; i <= n; i++)
+	{
+		fact[i] = (fact[i - 1] * i) % MOD;
+
+	}
+
+	invfact[n] = power(fact[n], MOD - 2);
+
+		for (int i = n - 1; i >= 0; i--)
+		{
+			invfact[i] = (i + 1) * (invfact[i + 1]) % MOD;
+		}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>nCr</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,43 @@
+<snippet>
+	<content><![CDATA[
+vector<int > bit;
+int  n, q;
+
+void update(int  index, int  val)
+{
+
+	while (index > 0 && index <= 500000) // change according to prob
+	{
+		//cout << index << " ";
+		bit[index] += val; // change here 
+		index = index + (index & (-index));
+
+	}
+}
+
+int  sum(int  index)
+{
+	int  val = 0;
+	while (index > 0)
+	{
+
+
+		val += bit[index]; // change here 
+		index -= (index & (-index));
+
+	}
+
+	return val;
+
+}
+int a[300001];
+
+/*
+bit.resize(300002);
+*/
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>fenwick</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

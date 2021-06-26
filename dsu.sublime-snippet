@@ -1,0 +1,45 @@
+<snippet>
+	<content><![CDATA[
+int parent[100001];
+
+int find(int a)
+{
+	if(parent[a]<0) return a;
+	else{
+	    int x=find(parent[a]);  // path compression 
+	    parent[a]=x;
+	    return x;
+
+	}
+
+	return a;
+}
+
+void Union(int a , int b)
+{
+  if(abs(parent[b])>abs(parent[a])) // union by rank 
+  {
+  swap(a,b);
+  }
+	parent[a] += parent[b];		//adding size of set b to set a
+	parent[b] = a;				//making a , parent of new set
+}
+
+// put in main function 
+
+/*for (int i = 1; i <= n; i++)
+		parent[i] = -1;		//initializing
+
+		a = find(a) , b = find(b); // thats how to use it 
+
+		if (a != b) Union(a , b);
+
+		*/
+
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>dsu</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
